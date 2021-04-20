@@ -1,24 +1,26 @@
-function VALOR(){
-   
-    //Capturar os campos
-    var outVeiculo = document.getElementById('txtVeiculo');
-    var outPreço = document.getElementById('txtPreço');
-    var outVeiculo = document.getElementById('txtVeiculo');
-    var outPreço = document.getElementById('txtPreço');
-    
-    //Capturar os valores
-    var veiculos = txtVeiculo.value
-    var preço = Number(txtPreço.value); // REAIS
+function calcular()
+{
+// Capturarando os campos
+var txtVeiculo = document.getElementById('txtVeiculo');
+var txtPreco = document.getElementById('txtPreco');
+var outVeiculo = document.getElementById('outVeiculo');
+var outEntrada = document.getElementById('outParcelas')
+var outPracela = document.getElementById('outParcelas')
 
+//Calculos
+ var preco = Number(txtPreço.value);
+ var entrada = preco / 2
+ var parcelas = entrada / 12
 
-    // calcular os valore
-    var valorentrada = Math.floor(valor /12);
-    var valorrestante = valor%50;
-    
-    //exibir resultados
-    outVeiculo.textContent = "Veiculo:" +veiculos
-    outPreço.textContent = $(valorEntrada) + $(valorRestante)}
+ // Formatando em Reais
+ entrada = entrada.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+ parcela = parcela.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
 
-    //Capturar o botao e adicionar o evento de click
-    var btVALOR = document.getElementById('btnVALOR')
-    btnVALOR.addEventListener('click',VALOR);
+ // Exibir Resultado
+ outVeiculo.textContent = txtVeiculo.value;
+ outEntrada.textContent = 'Entrada de ${entrada}';
+ outPracela.textContent = '+ 12 de ${parcelas}'
+}
+
+var btnPromocao = document.getElementById('btnPromocao')
+btnPromocao.addEventListener('click', calcular)
